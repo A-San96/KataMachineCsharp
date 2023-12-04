@@ -11,7 +11,31 @@ namespace DataStructAndAlgorithm.Implementations.Search
     {
         public bool BinarySearch(int[] hayStack, int needle)
         {
-            throw new NotImplementedException();
+            var low = 0;
+            var high = hayStack.Length;
+
+
+            do
+            {
+                var middle = (int)Math.Floor(low + (high - low) / 2m);
+                var value = hayStack[middle];
+
+                if (value == needle)
+                {
+                    return true;
+                }
+                else if (value > needle)
+                {
+                    high = middle;
+                }
+                else
+                {
+                    low = middle + 1;
+                }
+
+            } while (low < high);
+
+            return false;
         }
 
         public bool LinearSearch(int[] hayStack, int needle)

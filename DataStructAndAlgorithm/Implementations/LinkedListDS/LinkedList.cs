@@ -41,7 +41,7 @@ public class LinkedList<T> : ILinkedList<T>
         Node<T> current = head;
         for (int i = 0; i < index; i++)
         {
-            current = head.Next;
+            current = current.Next;
         }
 
         return current.Value;

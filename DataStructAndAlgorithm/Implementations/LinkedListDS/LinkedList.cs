@@ -33,20 +33,18 @@ public class LinkedList<T> : ILinkedList<T>
 
     public T Get(int index)
     {
-        Node<T> node = head;
         if (head is null || index >= length || index < 0)
         {
             throw new IndexOutOfRangeException();
         }
-        else
+
+        Node<T> current = head;
+        for (int i = 0; i < index; i++)
         {
-            for (int i = 0; i < index; i++)
-            {
-                node = head.Next;
-            }
+            current = head.Next;
         }
 
-        return node.Value;
+        return current.Value;
     }
 
     public void InsertAt(T item, int index)

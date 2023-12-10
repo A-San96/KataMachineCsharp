@@ -20,6 +20,7 @@ public class LinkedList<T> : ILinkedList<T>
         if (head is null)
         {
             head = newNode;
+            tail = newNode;
         }
         else
         {
@@ -32,7 +33,20 @@ public class LinkedList<T> : ILinkedList<T>
 
     public T Get(int index)
     {
-        throw new NotImplementedException();
+        Node<T> node = head;
+        if (head is null || index >= length || index < 0)
+        {
+            throw new IndexOutOfRangeException();
+        }
+        else
+        {
+            for (int i = 0; i < index; i++)
+            {
+                node = head.Next;
+            }
+        }
+
+        return node.Value;
     }
 
     public void InsertAt(T item, int index)

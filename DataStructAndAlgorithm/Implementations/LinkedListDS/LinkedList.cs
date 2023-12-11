@@ -49,7 +49,37 @@ public class LinkedList<T> : ILinkedList<T>
 
     public void InsertAt(T item, int index)
     {
-        throw new NotImplementedException();
+        if (head is null || index >= length || index < 0)
+        {
+            throw new IndexOutOfRangeException();
+        }
+
+        if (index == 0)
+        {
+            Prepend(item);
+            return;
+        }
+        else if (index == length - 1)
+        {
+            Append(item);
+            return;
+        }
+
+        Node<T> newNode = new Node<T>(item);
+        Node<T> current = head;
+        for (int i = 0; i < index; i++)
+        {
+            current = current.Next;
+        }
+
+        var prevNode = current.Prev;
+        prevNode.Next = newNode;
+        newNode.Next = current;
+        newNode.Prev = current.Prev;
+        current.Prev = newNode;
+
+        length++;
+
     }
 
     public void Prepend(T item)

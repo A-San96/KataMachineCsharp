@@ -31,6 +31,23 @@ public class LinkedList<T> : ILinkedList<T>
         length++;
     }
 
+    public void Prepend(T item)
+    {
+        var newNode = new Node<T>(item);
+        if (head is null)
+        {
+            head = newNode;
+            tail = newNode;
+        }
+        else
+        {
+            newNode.Next = head;
+            head.Prev = newNode;
+            head = newNode;
+        }
+        length++;
+    }
+
     public T Get(int index)
     {
         if (head is null || index >= length || index < 0)
@@ -80,11 +97,6 @@ public class LinkedList<T> : ILinkedList<T>
 
         length++;
 
-    }
-
-    public void Prepend(T item)
-    {
-        throw new NotImplementedException();
     }
 
     public T Remove(T item)
